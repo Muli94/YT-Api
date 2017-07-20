@@ -8,9 +8,14 @@ class VideoListItem extends Component{
 
         }
     }
+    handleVideoSelect = () =>{
+        if(typeof this.props.onVideoSelect === 'function'){
+            this.props.onVideoSelect(this.props.video);
+        }
+    }
     render(){
         return(
-            <li>
+            <li onClick={this.handleVideoSelect}>
                 <div>
                     <div>
                         <img src={this.props.video.snippet.thumbnails.default.url} alt=""/>

@@ -27,13 +27,18 @@ class App extends Component{
             })
         })
     }
-    
+    onVideoSelect = (selectedVideo) =>{
+        this.setState({
+            selectedVideo,
+        })
+    }
         render(){
             return (
                 <div>
                     <Menu onInputChange={this.handleVideosTerm}/>
                     {!this.state.selectedVideo ? <div>Loading...</div> : <VideoDetail selectedVideo={this.state.selectedVideo}/>}
-                    <VideoList videos={this.state.videos}/>
+                    <VideoList videos={this.state.videos}
+                    onVideoSelect={this.onVideoSelect}/>
                     <Footer />
                 </div>
             )

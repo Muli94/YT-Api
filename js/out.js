@@ -10739,6 +10739,12 @@ var App = function (_Component) {
             });
         };
 
+        _this.onVideoSelect = function (selectedVideo) {
+            _this.setState({
+                selectedVideo: selectedVideo
+            });
+        };
+
         _this.state = {
             videos: [],
             selectedVideo: null
@@ -10759,7 +10765,8 @@ var App = function (_Component) {
                     null,
                     'Loading...'
                 ) : _react2.default.createElement(_video_detail2.default, { selectedVideo: this.state.selectedVideo }),
-                _react2.default.createElement(_video_list2.default, { videos: this.state.videos }),
+                _react2.default.createElement(_video_list2.default, { videos: this.state.videos,
+                    onVideoSelect: this.onVideoSelect }),
                 _react2.default.createElement(_footer2.default, null)
             );
         }
@@ -24155,12 +24162,15 @@ var VideoList = function (_Component) {
     _createClass(VideoList, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'ul',
                 null,
                 this.props.videos.map(function (video) {
                     return _react2.default.createElement(_video_list_item2.default, { video: video,
-                        key: video.etag });
+                        key: video.etag,
+                        onVideoSelect: _this2.props.onVideoSelect });
                 })
             );
         }
@@ -24204,29 +24214,35 @@ var VideoListItem = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (VideoListItem.__proto__ || Object.getPrototypeOf(VideoListItem)).call(this, props));
 
+        _this.handleVideoSelect = function () {
+            if (typeof _this.props.onVideoSelect === 'function') {
+                _this.props.onVideoSelect(_this.props.video);
+            }
+        };
+
         _this.state = {};
         return _this;
     }
 
     _createClass(VideoListItem, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                "li",
-                null,
+                'li',
+                { onClick: this.handleVideoSelect },
                 _react2.default.createElement(
-                    "div",
+                    'div',
                     null,
                     _react2.default.createElement(
-                        "div",
+                        'div',
                         null,
-                        _react2.default.createElement("img", { src: this.props.video.snippet.thumbnails.default.url, alt: "" })
+                        _react2.default.createElement('img', { src: this.props.video.snippet.thumbnails.default.url, alt: '' })
                     ),
                     _react2.default.createElement(
-                        "div",
+                        'div',
                         null,
                         _react2.default.createElement(
-                            "div",
+                            'div',
                             null,
                             this.props.video.snippet.title
                         )
