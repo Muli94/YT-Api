@@ -18,11 +18,12 @@ class Menu extends Component{
     }
     render(){
         return(
-            <header>
-                <h1>Logo</h1>
-                <input type="text"
-                onChange={this.handleInputChange}/>
-            </header>
+            <div className="search-bar">
+                <input  
+                type="text"
+                onChange={this.handleInputChange}
+                value={this.state.term}/>
+            </div>
         ) 
     }
 }

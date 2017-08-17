@@ -23964,15 +23964,12 @@ var Menu = function (_Component) {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'header',
-                null,
-                _react2.default.createElement(
-                    'h1',
-                    null,
-                    'Logo'
-                ),
-                _react2.default.createElement('input', { type: 'text',
-                    onChange: this.handleInputChange })
+                'div',
+                { className: 'search-bar' },
+                _react2.default.createElement('input', {
+                    type: 'text',
+                    onChange: this.handleInputChange,
+                    value: this.state.term })
             );
         }
     }]);
@@ -24017,28 +24014,40 @@ var Footer = function (_Component) {
     }
 
     _createClass(Footer, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             return _react2.default.createElement(
-                'footer',
-                null,
+                "footer",
+                { className: "col-md-12" },
                 _react2.default.createElement(
-                    'ul',
-                    null,
+                    "ul",
+                    { className: "footer-list" },
                     _react2.default.createElement(
-                        'li',
+                        "li",
                         null,
-                        'Github'
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://github.com/Muli94", target: "_blank" },
+                            "Github"
+                        )
                     ),
                     _react2.default.createElement(
-                        'li',
+                        "li",
                         null,
-                        'linkedIN'
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://www.linkedin.com/in/karolmularczyk/", target: "_blank" },
+                            "linkedIN"
+                        )
                     ),
                     _react2.default.createElement(
-                        'li',
+                        "li",
                         null,
-                        'FB'
+                        _react2.default.createElement(
+                            "a",
+                            { href: "https://www.facebook.com/karol.mularczyk.1", target: "_blank" },
+                            "Facebook"
+                        )
                     )
                 )
             );
@@ -24089,15 +24098,16 @@ var VideoDetail = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 "div",
-                null,
+                { className: "video-detail col-md-8" },
                 _react2.default.createElement(
                     "div",
-                    null,
-                    _react2.default.createElement("iframe", { src: "https://www.youtube.com/embed/" + this.props.selectedVideo.id.videoId })
+                    { className: "embed-responsive embed-responsive-16by9" },
+                    _react2.default.createElement("iframe", { src: "https://www.youtube.com/embed/" + this.props.selectedVideo.id.videoId,
+                        className: "embed-responsive-item" })
                 ),
                 _react2.default.createElement(
                     "div",
-                    null,
+                    { className: "details" },
                     _react2.default.createElement(
                         "h1",
                         null,
@@ -24166,7 +24176,7 @@ var VideoList = function (_Component) {
 
             return _react2.default.createElement(
                 'ul',
-                null,
+                { className: 'col-md-4 list-group' },
                 this.props.videos.map(function (video) {
                     return _react2.default.createElement(_video_list_item2.default, { video: video,
                         key: video.etag,
@@ -24229,21 +24239,23 @@ var VideoListItem = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 'li',
-                { onClick: this.handleVideoSelect },
+                { onClick: this.handleVideoSelect,
+                    className: 'list-group-item' },
                 _react2.default.createElement(
                     'div',
-                    null,
+                    { className: 'video-list media' },
                     _react2.default.createElement(
                         'div',
-                        null,
-                        _react2.default.createElement('img', { src: this.props.video.snippet.thumbnails.default.url, alt: '' })
+                        { className: 'media-left' },
+                        _react2.default.createElement('img', { src: this.props.video.snippet.thumbnails.default.url, alt: '',
+                            className: 'media-object' })
                     ),
                     _react2.default.createElement(
                         'div',
-                        null,
+                        { className: 'media-body' },
                         _react2.default.createElement(
                             'div',
-                            null,
+                            { className: 'media-heading' },
                             this.props.video.snippet.title
                         )
                     )

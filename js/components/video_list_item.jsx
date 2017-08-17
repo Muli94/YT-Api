@@ -15,13 +15,15 @@ class VideoListItem extends Component{
     }
     render(){
         return(
-            <li onClick={this.handleVideoSelect}>
-                <div>
-                    <div>
-                        <img src={this.props.video.snippet.thumbnails.default.url} alt=""/>
+            <li onClick={this.handleVideoSelect}
+            className="list-group-item">
+                <div className="video-list media">
+                    <div className="media-left">
+                        <img src={this.props.video.snippet.thumbnails.default.url} alt=""
+                        className="media-object"/>
                     </div>
-                    <div>
-                        <div>{this.props.video.snippet.title}</div>
+                    <div className="media-body">
+                        <div className="media-heading">{this.props.video.snippet.title}</div>
                     </div>
                 </div>
             </li>
