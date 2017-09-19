@@ -22,7 +22,8 @@ class Menu extends Component{
                 <input  
                 type="text"
                 onChange={this.handleInputChange}
-                value={this.state.term}/>
+                value={this.state.term}
+                />
             </div>
         ) 
     }
